@@ -1,0 +1,12 @@
+.update{
+    background-color: #4CAF50 !important;
+}
+.delete{
+    background-color: #E57373 !important;
+}
+.user{
+    background-color: #E3F2FD;
+}
+#table{
+    background-color: #F4F7FA;
+}

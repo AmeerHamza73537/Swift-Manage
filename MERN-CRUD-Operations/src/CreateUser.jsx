@@ -10,7 +10,7 @@ function CreateUsers() {
 
     const Submit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/createUser', { name, email, age })
+        axios.post('https://managif.netlify.app/create', { name, email, age })
             .then(result => {
                 console.log(result);
                 navigate('/');

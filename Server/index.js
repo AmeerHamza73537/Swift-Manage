@@ -7,10 +7,7 @@ const app = express()
 app.use(cors()) // cross origin to access the server side in our frontend
 app.use(express.json()) // For whenever we pass data from frontend to the button so it will force that to JSON format if we don't do this it will give an error
 
-mongoose.connect('mongodb+srv://contacthamza456:iambetterat69@cluster0.ub984h2.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect('mongodb+srv://contacthamza456:iambetterat69@cluster0.ub984h2.mongodb.net/test?retryWrites=true&w=majority')
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error('MongoDB connection error:', err))
 
@@ -38,17 +35,24 @@ app.put('/updateUser/:id', (req,res)=>{
 
 // For deleting the recorrd
 app.delete('/deleteUser/:id', (req,res)=>{
-    const id = req.params.id
-    UserModel.findByIdAndDelete({_id:id})
-    .then((res) => console.log(res))
-    .catch((err)=> console.log(err))
+  const id = req.params.id
+  UserModel.findByIdAndDelete(id)
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
 })
+
 // Creating API for new record
 // Parameters --- 1- Path, 2- Callback function
 app.post('/createUser', (req,res)=>{
     // The data sending from frontend will be attached to this body
     UserModel.create(req.body)
-    .then(users=>{res.json((users))})
+    .then(
+        users=>{
+            console.log('working');
+            
+            res.json((users))
+        }
+    )
     .catch((err)=>{res.json(err)})
 })
 

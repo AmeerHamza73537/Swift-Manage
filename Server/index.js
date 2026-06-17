@@ -5,7 +5,10 @@ const UserModel = require('./models/model-user')
 require('dotenv').config() // to use the .env file in our project
 
 const app = express()
-app.use(cors()) // cross origin to access the server side in our frontend
+app.use(cors({
+  origin: 'https://swift-manage.vercel.app',
+  credentials: true
+})); // cross origin to access the server side in our frontend
 app.use(express.json()) // For whenever we pass data from frontend to the button so it will force that to JSON format if we don't do this it will give an error
 
 mongoose.connect(process.env.MONGO_URI)

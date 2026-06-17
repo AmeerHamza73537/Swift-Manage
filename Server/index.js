@@ -13,13 +13,13 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((err) => console.error('MongoDB connection error:', err))
 
 // To write the api for server side, for get method
-app.get('/',(req,res)=>{
+app.get('https://swift-manage.vercel.app',(req,res)=>{
     UserModel.find({})
     .then(user => res.json(user))
     .catch(err => res.json(err))
 })
 
-app.get('/getUser/:id', (req,res)=>{
+app.get('https://swift-manage.vercel.app/getUser/:id', (req,res)=>{
     const id = req.params.id // it will get the id from the url
     UserModel.findById({_id:id})
     .then(user => res.json(user))
@@ -27,7 +27,7 @@ app.get('/getUser/:id', (req,res)=>{
 })
 
 // For updating the values in the database
-app.put('/updateUser/:id', (req,res)=>{
+app.put('https://swift-manage.vercel.app/updateUser/:id', (req,res)=>{
     const id = req.params.id
     UserModel.findByIdAndUpdate({_id:id}, {name: req.body.name, email:req.body.email, age:req.body.age})
     .then(user => res.json(user))
@@ -35,7 +35,7 @@ app.put('/updateUser/:id', (req,res)=>{
 })
 
 // For deleting the recorrd
-app.delete('/deleteUser/:id', (req,res)=>{
+app.delete('https://swift-manage.vercel.app/deleteUser/:id', (req,res)=>{
   const id = req.params.id
   UserModel.findByIdAndDelete(id)
     .then(user => res.json(user))
@@ -44,7 +44,7 @@ app.delete('/deleteUser/:id', (req,res)=>{
 
 // Creating API for new record
 // Parameters --- 1- Path, 2- Callback function
-app.post('/createUser', (req,res)=>{
+app.post('https://swift-manage.vercel.app/createUser', (req,res)=>{
     // The data sending from frontend will be attached to this body
     UserModel.create(req.body)
     .then(

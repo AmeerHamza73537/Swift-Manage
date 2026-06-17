@@ -8,13 +8,13 @@ function User() {
 
   // To show the data on frontend
   useEffect(() => {
-    axios.get('http://localhost:3000')
+    axios.get('https://swift-manage-production.up.railway.app/')
       .then(result => setUsers(result.data)) // setUsers will send the data to the state so that it can be shown on frontend
       .catch(err => console.log(err))
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3000/deleteUser/' + id)
+    axios.delete('https://swift-manage-production.up.railway.app/deleteUser/' + id)
       .then((res) => {
         console.log(res);
         window.location.reload();

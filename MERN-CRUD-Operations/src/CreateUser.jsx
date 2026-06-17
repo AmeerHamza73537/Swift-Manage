@@ -10,7 +10,7 @@ function CreateUsers() {
 
     const Submit = (e) => {
         e.preventDefault();
-        axios.post('https://managif.netlify.app/create', { name, email, age })
+        axios.post('https://swift-manage-production.up.railway.app/create', { name, email, age })
             .then(result => {
                 console.log(result);
                 navigate('/');

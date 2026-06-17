@@ -11,7 +11,7 @@ function UpdateUsers() {
 
     // useEffect is to get the record by id
     useEffect(() => {
-        axios.get('http://localhost:3000/getUser/' + id)
+        axios.get('https://swift-manage-production.up.railway.app/getUser/' + id)
             .then(result => {
                 console.log(result);
                 setName(result.data.name);
@@ -23,7 +23,7 @@ function UpdateUsers() {
 
     const Update = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:3000/updateUser/' + id, { name, email, age })
+        axios.put('https://swift-manage-production.up.railway.app/updateUser/' + id, { name, email, age })
             .then(result => {
                 console.log(result);
                 navigate('/');
